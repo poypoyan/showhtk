@@ -9,3 +9,5 @@ Instructions:
 3. Go to *Tools* menu > *Scripts*. Click the plus button to add the script.
 4. At the right side of the window are the Description and 2 Properties: *Duration (seconds)* and *Text Source*. Modify the duration as you wish and load the text source you just created.
 5. Click *Close*, and try pressing some hotkeys now!
+
+Supported hotkeys so far are found [here](../../issues/1).
