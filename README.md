@@ -11,3 +11,7 @@ Instructions:
 5. Click *Close*, and try pressing some hotkeys now!
 
 Supported hotkeys so far are found [here](../../issues/1).
+
+Where I got this idea and code inspiration?
+* Thanks to upgradeQ here: https://ideas.obsproject.com/posts/746/show-user-keystrokes-on-screen
+* Their script: https://github.com/upgradeQ/OBS-VirtualChat
