@@ -1,3 +1,9 @@
+-- This Source Code Form is subject to the terms of the
+-- Mozilla Public License, v. 2.0. If a copy of the MPL
+-- was not distributed with this file, You can obtain one
+-- at https://mozilla.org/MPL/2.0/.
+--
+-- This is showhtk.lua by poypoyan. https://github.com/poypoyan/showhtk
 obs = obslua
 ffi = require("ffi")
 
@@ -66,7 +72,6 @@ KEYBOARD_LAYOUT = { -- ind = true means that the key can be a standalone hotkey
 {id = "X", jsn = "OBS_KEY_X", txt = "X", ind = false},
 {id = "Y", jsn = "OBS_KEY_Y", txt = "Y", ind = false},
 {id = "Z", jsn = "OBS_KEY_Z", txt = "Z", ind = false},
-{id = "NONE", jsn = "OBS_KEY_NONE"}, -- special, for combos that could be standalone
 }
 -- TODO: more keys
 
@@ -84,6 +89,7 @@ SHORTCUT_COMBO = {
 {id = "_CTRL_", jsn = ", \"control\": true", txt = "Ctrl"},
 {id = "_CTRL_SHIFT_", jsn = ", \"control\": true, \"shift\": true", txt = "Ctrl+Shift"},
 {id = "_ALT_", jsn = ", \"alt\": true", txt = "Alt"},
+{id = "_ALT_SHIFT_", jsn = ", \"alt\": true, \"shift\": true", txt = "Alt+Shift"},
 {id = "_CTRL_ALT_", jsn = ", \"control\": true, \"alt\": true", txt = "Ctrl+Alt"},
 {id = "_CMD_", jsn = ", \"command\": true", txt = SUPER_KEY},
 }
@@ -94,12 +100,6 @@ KEY_FORM = "\"SHOWHTK%s%s\": [{\"key\": \"%s\"%s}]%s"
 for k1,v1 in pairs(SHORTCUT_COMBO) do
 	for k2,v2 in pairs(KEYBOARD_LAYOUT) do
 		local htk_text
-		if v2.id == "NONE" then
-			-- cmd alone opens start menu
-			if v1.id ~= "_CMD_" then goto continue end
-			htk_text = v1.txt
-			goto skip_other_if -- yeah, yeah I know
-		end
 		if v1.id == "_" then
 			if not v2.ind then goto continue end
 			htk_text = v2.txt
@@ -109,7 +109,6 @@ for k1,v1 in pairs(SHORTCUT_COMBO) do
 		else
 			htk_text = v1.txt .. "+" .. v2.txt
 		end
-		::skip_other_if::
 
 		-- final absense of comma is apparently important in obs_data_create_from_json
 		local comma
@@ -184,7 +183,6 @@ function script_load(settings)
 
 	for _,v1 in pairs(SHORTCUT_COMBO) do
 		for _,v2 in pairs(KEYBOARD_LAYOUT) do
-			if v2.id == "NONE" and v1.id ~= "_CMD_" then goto continue end
 			if (v1.id == "_" or v1.id == "_SHIFT_") and not v2.ind then goto continue end
 			reg_hotkey(jsn, "SHOWHTK" .. v1.id .. v2.id)
 		::continue:: end
