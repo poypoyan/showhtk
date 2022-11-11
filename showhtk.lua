@@ -26,6 +26,7 @@ KEYBOARD_LAYOUT = { -- ind = true means that the key can be a standalone hotkey
 {id = "MINUS", jsn = "OBS_KEY_MINUS", txt = "-", ind = false},
 {id = "PLUS", jsn = "OBS_KEY_PLUS", txt = "=", ind = false},
 {id = "BSPACE", jsn = "OBS_KEY_BACKSPACE", txt = "BS", ind = false},
+{id = "DELETE", jsn = "OBS_KEY_DELETE", txt = "Del", ind = false},
 {id = "TAB", jsn = "OBS_KEY_TAB", txt = "Tab", ind = false},
 {id = "BLEFT", jsn = "OBS_KEY_BRACKETLEFT", txt = "[", ind = false},
 {id = "BRIGHT", jsn = "OBS_KEY_BRACKETRIGHT", txt = "]", ind = false},
@@ -88,10 +89,11 @@ SHORTCUT_COMBO = {
 {id = "_SHIFT_", jsn = ", \"shift\": true", txt = "Shift"}, -- for ind = true keys in KEYBOARD_LAYOUT
 {id = "_CTRL_", jsn = ", \"control\": true", txt = "Ctrl"},
 {id = "_CTRL_SHIFT_", jsn = ", \"control\": true, \"shift\": true", txt = "Ctrl+Shift"},
+{id = "_CTRL_ALT_", jsn = ", \"control\": true, \"alt\": true", txt = "Ctrl+Alt"},
 {id = "_ALT_", jsn = ", \"alt\": true", txt = "Alt"},
 {id = "_ALT_SHIFT_", jsn = ", \"alt\": true, \"shift\": true", txt = "Alt+Shift"},
-{id = "_CTRL_ALT_", jsn = ", \"control\": true, \"alt\": true", txt = "Ctrl+Alt"},
 {id = "_CMD_", jsn = ", \"command\": true", txt = SUPER_KEY},
+{id = "_CMD_SHIFT_", jsn = ", \"command\": true, \"shift\": true", txt = SUPER_KEY .. "+Shift"},
 }
 -- TODO: more combos
 
