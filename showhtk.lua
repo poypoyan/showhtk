@@ -8,6 +8,17 @@ obs = obslua
 ffi = require("ffi")
 
 -- constants
+if ffi.os == "Windows" then
+	SUPER_KEY = "Win"
+	RETURN_KEY = "Enter"
+elseif ffi.os == "OSX" then
+	SUPER_KEY = "Cmd"
+	RETURN_KEY = "Return"
+else
+	SUPER_KEY = "Super"
+	RETURN_KEY = "Return"
+end
+
 KEYBOARD_LAYOUT = { -- ind = true means that the key can be a standalone hotkey
 {id = "ESC", jsn = "OBS_KEY_ESCAPE", txt = "Esc", ind = true},
 {id = "F1", jsn = "OBS_KEY_F1", txt = "F1", ind = true},
@@ -23,6 +34,7 @@ KEYBOARD_LAYOUT = { -- ind = true means that the key can be a standalone hotkey
 {id = "F11", jsn = "OBS_KEY_F11", txt = "F11", ind = true},
 {id = "F12", jsn = "OBS_KEY_F12", txt = "F12", ind = true},
 {id = "DELETE", jsn = "OBS_KEY_DELETE", txt = "Del", ind = true},
+{id = "RETURN", jsn = "OBS_KEY_RETURN", txt = RETURN_KEY, ind = true},
 {id = "TILDE", jsn = "OBS_KEY_ASCIITILDE", txt = "`", ind = false},
 {id = "MINUS", jsn = "OBS_KEY_MINUS", txt = "-", ind = false},
 {id = "PLUS", jsn = "OBS_KEY_PLUS", txt = "=", ind = false},
@@ -74,15 +86,6 @@ KEYBOARD_LAYOUT = { -- ind = true means that the key can be a standalone hotkey
 {id = "Y", jsn = "OBS_KEY_Y", txt = "Y", ind = false},
 {id = "Z", jsn = "OBS_KEY_Z", txt = "Z", ind = false},
 }
--- TODO: more keys
-
-if ffi.os == "Windows" then
-	SUPER_KEY = "Win"
-elseif ffi.os == "OSX" then
-	SUPER_KEY = "Cmd"
-else
-	SUPER_KEY = "Super"
-end
 
 SHORTCUT_COMBO = {
 {id = "_", jsn = ""}, -- for ind = true keys in KEYBOARD_LAYOUT
@@ -96,7 +99,6 @@ SHORTCUT_COMBO = {
 {id = "_CMD_", jsn = ", \"command\": true", txt = SUPER_KEY},
 {id = "_CMD_SHIFT_", jsn = ", \"command\": true, \"shift\": true", txt = SUPER_KEY .. "+Shift"},
 }
--- TODO: more combos
 
 JSON_DATA = "{"
 KEY_FORM = "\"SHOWHTK%s%s\": [{\"key\": \"%s\"%s}]%s"

@@ -14,12 +14,12 @@ Demo: https://youtu.be/iMdDl_yG-c4
 
 Here are the *base* keys:
 ```
-Escape, F1-F12, Delete, 0-9, A-Z, Tilde, Minus, Equals, Backspace, Tab, Left Bracket, Right Bracket, Backslash, Semicolon, Apostrophe, Comma, Period, Slash, Space
+Escape, F1-F12, Delete, Return, 0-9, A-Z, Tilde, Minus, Equals, Backspace, Tab, Left Bracket, Right Bracket, Backslash, Semicolon, Apostrophe, Comma, Period, Slash, Space
 ```
 
 Supported hotkey forms:
-* Escape, F1-F12, Delete
-* Shift+Escape, Shift+F1-F12, Shift+Delete
+* Escape, F1-F12, Delete, Return (Return is shown as *Enter* in Windows.)
+* Shift+Escape, Shift+F1-F12, Shift+Delete, Shift+Return
 * Ctrl+&lt;base key&gt;
 * Ctrl+Shift+&lt;base key&gt;
 * Ctrl+Alt+&lt;base key&gt;
@@ -29,7 +29,7 @@ Supported hotkey forms:
 * Cmd+&lt;base key&gt; (Cmd is *Win* key in Windows.)
 * Cmd+Shift+&lt;base key&gt;
 
-Just make an issue if anyone wants more hotkeys 😃. Note that I'll reject "incomplete" hotkeys like Ctrl *only*, Alt *only*, etc. because I found out that those keys "compete" with the hotkey forms above.
+Just make an issue if anyone wants more hotkeys 😃. Note that I will not implement "incomplete" hotkeys like Ctrl *only*, Alt *only*, etc. because I found out that those keys alone, in some sense, "compete in being shown" with themselves and the hotkey forms above.
 
 ### Where I got this idea and code inspiration?
 * Thanks to upgradeQ here: https://ideas.obsproject.com/posts/746/show-user-keystrokes-on-screen
